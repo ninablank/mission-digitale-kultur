@@ -7,42 +7,119 @@
   <title>Mission Digitale Kultur – Das Förder‑Orakel (Mint Edition – SVG Sprites)</title>
   <meta name="description" content="Retro‑Quiz im mintgrünen Förderlabor. Oliver Miescher befragt das Orakel – Ergebnis: Nina Blank ist die ideale Wahl." />
   <style>
-    :root{
-      --bg:#0e1f18; --bg2:#133127; --mint:#9ff7c2; --mint2:#e7fff3; --ink:#07130f; --panel:#0c1a14; --orb:#eaffcf; --accent:#18c08f;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--mint2);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-    body{display:flex;min-height:100vh}
+   :root{
+    --bg:#0e1f18; --bg2:#133127; --mint:#9ff7c2; --mint2:#e7fff3;
+    --ink:#07130f; --orb:#eaffcf; --accent:#18c08f;
+  }
 
-    .wrap{display:flex;flex-direction:column;width:100%;max-width:980px;margin:0 auto}
+  *{box-sizing:border-box}
+  html,body{
+    height:100%;
+    margin:0;
+    background:linear-gradient(180deg,var(--bg),var(--bg2));
+    color:var(--mint2);
+    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  }
+  body{display:flex;min-height:100vh}
 
-    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:rgba(12,26,20,.85);border-bottom:3px solid #000}
-    header h1{margin:0;font-size:20px;font-weight:800}
-    .badge{background:var(--mint);color:var(--ink);border:3px solid #000;border-radius:10px;padding:6px 10px;font-weight:700}
+  /* Layout */
+  .wrap{display:flex;flex-direction:column;width:100%;max-width:980px;margin:0 auto}
 
-    .scene{position:relative;flex:1;min-height:68vh;border-bottom:3px solid #000;overflow:hidden;background:radial-gradient(70% 60% at 50% 20%, rgba(24,192,143,.18), transparent 60%)}
-    .ground{position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,#0f241d,#0a1a15);border-top:3px solid #000}
-    .oracle{position:absolute;left:50%;bottom:160px;transform:translateX(-50%);width:240px;height:124px;border:3px solid #000;border-radius:12px;background:#0a1612;z-index:2}
-    .oracle::before{content:"";position:absolute;left:50%;top:-16px;transform:translateX(-50%);width:96px;height:96px;border-radius:50%;background:radial-gradient(circle,var(--orb) 0 30%, rgba(234,255,207,.45) 30% 58%, transparent 60%);animation:pulse 2.4s infinite ease-in-out}
-    @keyframes pulse{0%,100%{opacity:.9;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.06)}}
+  header{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;padding:14px 16px;
+    background:rgba(12,26,20,.85);
+    border-bottom:3px solid #000
+  }
+  header h1{margin:0;font-size:20px;font-weight:800}
+  .badge{
+    background:var(--mint);color:var(--ink);
+    border:3px solid #000;border-radius:10px;
+    padding:6px 10px;font-weight:700
+  }
 
-    .dialog{position:absolute;top:16px;left:50%;transform:translateX(-50%);max-width:min(92vw,860px);background:rgba(12,26,20,.95);border:3px solid #000;border-radius:12px;padding:14px 16px;z-index:3}
-    .dialog p{margin:0;line-height:1.7;font-size:clamp(14px,2.1vw,18px)}
-    .choices{margin-top:12px;display:grid;gap:10px}
-    .choice{padding:12px 14px;background:#0c1f19;border:3px solid #000;border-radius:10px;cursor:pointer;font-weight:800;color:var(--mint2)}
-    .choice:hover{filter:brightness(1.12);background:#12392e}
+  /* Szene mit Pixel-Hintergrund */
+  .scene{
+    position:relative;
+    flex:1;
+    min-height:68vh;
+    border-bottom:3px solid #000;
+    overflow:hidden;
+    background: url('scene.gif') center bottom / cover no-repeat,
+                linear-gradient(180deg,var(--bg),var(--bg2));
+  }
 
-    /* SVG‑Sprites sichtbar über allem */
-    .sprite{position:absolute;bottom:160px;width:120px;height:160px;z-index:2;pointer-events:none}
-    .sprite svg{width:100%;height:100%;image-rendering:pixelated}
-    .sprite.nina{left:8%}
-    .sprite.oliver{right:8%}
+  .ground{
+    position:absolute;left:0;right:0;bottom:0;
+    height:160px;background:linear-gradient(180deg,#0f241d,#0a1a15);
+    border-top:3px solid #000;
+  }
 
-    .status{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(12,26,20,.9);border-top:3px solid #000}
-    .meter{flex:1;height:12px;background:#0a1a15;border:3px solid #000;border-radius:20px;overflow:hidden}
-    .meter>div{height:100%;width:0%;background:linear-gradient(90deg,var(--mint),var(--accent))}
-    .btn{padding:12px 16px;border:3px solid #000;border-radius:10px;font-weight:800;cursor:pointer}
-    .btn.primary{background:var(--mint);color:var(--ink)}
+  /* Orakel-Kugel */
+  .oracle{
+    position:absolute;
+    left:50%;bottom:160px;
+    transform:translateX(-50%);
+    width:240px;height:124px;
+    border:3px solid #000;border-radius:12px;
+    background:#0a1612;z-index:2;
+  }
+  .oracle::before{
+    content:"";
+    position:absolute;left:50%;top:-16px;
+    transform:translateX(-50%);
+    width:96px;height:96px;border-radius:50%;
+    background:radial-gradient(circle,var(--orb) 0 30%,rgba(234,255,207,.45) 30% 58%,transparent 60%);
+    animation:pulse 2.4s infinite ease-in-out;
+  }
+  @keyframes pulse{
+    0%,100%{opacity:.9;transform:translateX(-50%) scale(1)}
+    50%{opacity:1;transform:translateX(-50%) scale(1.06)}
+  }
+
+  /* Dialogfeld */
+  .dialog{
+    position:absolute;top:16px;left:50%;transform:translateX(-50%);
+    max-width:min(92vw,860px);
+    background:rgba(12,26,20,.95);
+    border:3px solid #000;border-radius:12px;
+    padding:14px 16px;z-index:3;
+  }
+  .dialog p{margin:0;line-height:1.7;font-size:clamp(14px,2.1vw,18px)}
+
+  .choices{margin-top:12px;display:grid;gap:10px}
+  .choice{
+    padding:12px 14px;
+    background:#0c1f19;border:3px solid #000;border-radius:10px;
+    cursor:pointer;font-weight:800;color:var(--mint2)
+  }
+  .choice:hover{filter:brightness(1.12);background:#12392e}
+
+  /* Statusleiste */
+  .status{
+    display:flex;gap:12px;align-items:center;justify-content:space-between;
+    padding:12px 16px;background:rgba(12,26,20,.9);
+    border-top:3px solid #000
+  }
+  .meter{
+    flex:1;height:12px;background:#0a1a15;border:3px solid #000;
+    border-radius:20px;overflow:hidden
+  }
+  .meter>div{
+    height:100%;width:0%;
+    background:linear-gradient(90deg,var(--mint),var(--accent))
+  }
+  .btn{
+    padding:12px 16px;border:3px solid #000;border-radius:10px;
+    font-weight:800;cursor:pointer
+  }
+  .btn.primary{background:var(--mint);color:var(--ink)}
+  .btn.secondary{background:#0c1f19;color:var(--mint2)}
+
+  /* Pixeloptik für Text und Orakel */
+  .dialog, .oracle{
+    image-rendering: pixelated;
+  }
     .btn.secondary{background:#0c1f19;color:var(--mint2)}
   </style>
 </head>
