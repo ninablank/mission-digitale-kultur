@@ -2,86 +2,73 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mission Digitale Kultur – Das Förder‑Orakel (Mint Edition)</title>
-  <meta name="description" content="Humorvolles Mini‑Adventure im 90er‑Vibe: Oliver Miescher befragt das Orakel – und landet bei Nina Blank als perfekter Wahl." />
-  <meta property="og:title" content="Mission Digitale Kultur – Das Förder‑Orakel" />
-  <meta property="og:description" content="Ein kurzes, spielbares Orakel‑Quiz im Retro‑Look. Spoiler: Nina Blank ist die perfekte Wahl." />
+  <title>Mission Digitale Kultur – Das Förder‑Orakel (Mint Edition – Safe Build)</title>
+  <meta name="description" content="Retro‑Quiz im mintgrünen Förderlabor. Oliver Miescher befragt das Orakel – Ergebnis: Nina Blank ist die ideale Wahl." />
   <style>
-    /* ===== Mintgrün‑Thema (ruhig, freundlich) ===== */
+    /* ===== Farbwelt ===== */
     :root{
-      --bg:#0e1f18;          /* dunkles Tannengrün */
-      --bg2:#133127;          /* tieferer Verlauf */
-      --mint:#9ff7c2;         /* Akzent Mint */
-      --mint2:#e7fff3;        /* heller Mint (Text) */
-      --creme:#f3fff8;        /* Text hell */
-      --panel:#0c1a14;        /* UI Pane */
-      --orb:#eaffcf;          /* Orakelglühen */
-      --warn:#ffb86b;         /* warmes Gelb für Highlights */
-      --accent:#18c08f;       /* smaragd Akzent */
-      --ink:#07130f;          /* sehr dunkles Grün für Kontrast */
+      --bg:#0e1f18;  /* dunkles Grün */
+      --bg2:#133127; /* Verlauf */
+      --mint:#9ff7c2;  /* Akzent */
+      --mint2:#e7fff3; /* heller Text */
+      --ink:#07130f;   /* sehr dunkles Grün */
+      --panel:#0c1a14; /* Pane */
+      --orb:#eaffcf;   /* Orakel */
+      --accent:#18c08f;/* Smaragd */
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--creme);font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--mint2);font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial}
     body{display:flex;min-height:100vh}
 
-    /* leichte Scanlines + Körnung für Retro‑Gefühl */
-    .crt{position:relative; isolation:isolate}
-    .crt::after{content:""; position:absolute; inset:0; pointer-events:none; opacity:.08; mix-blend-mode:overlay; background:repeating-linear-gradient(to bottom, rgba(255,255,255,.12) 0 1px, transparent 1px 3px)}
+    /* Container */
+    .wrap{display:flex; flex-direction:column; width:100%; max-width:980px; margin:0 auto}
 
-    .wrap{display:flex; flex-direction:column; width:100%; max-width:1100px; margin:0 auto}
-
-    header{display:flex; align-items:center; justify-content:space-between; gap:16px; padding:14px 18px; background:rgba(12,26,20,.6); border-bottom:3px solid #000}
-    header h1{font-weight:700; font-size:18px; letter-spacing:.5px; margin:0}
-    .badge{background:var(--mint); color:#0a2b20; border:3px solid #000; border-radius:10px; padding:8px 12px; font-weight:700}
+    /* Header */
+    header{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px; background:rgba(12,26,20,.75); border-bottom:3px solid #000}
+    header h1{margin:0; font-size:20px; font-weight:800}
+    .badge{background:var(--mint); color:var(--ink); border:3px solid #000; border-radius:10px; padding:6px 10px; font-weight:700}
 
     /* Szene */
-    .scene{position:relative; flex:1; min-height:58vh; display:flex; align-items:flex-end; justify-content:center; border-bottom:3px solid #000; overflow:hidden}
-    .bgLayer{position:absolute; inset:0; background:radial-gradient(80% 70% at 50% 20%, rgba(24,192,143,.15), transparent 60%),
-                                     linear-gradient(180deg, rgba(159,247,194,.10), transparent 40%)}
+    .scene{position:relative; flex:1; min-height:60vh; border-bottom:3px solid #000; overflow:hidden; background:radial-gradient(70% 60% at 50% 20%, rgba(24,192,143,.18), transparent 60%)}
     .ground{position:absolute; left:0; right:0; bottom:0; height:140px; background:linear-gradient(180deg,#0f241d,#0a1a15); border-top:3px solid #000}
-
-    /* Orakel‑Terminal */
-    .oracle{position:absolute; bottom:140px; left:50%; transform:translateX(-50%); width:220px; height:120px; border:3px solid #000; border-radius:12px; background:linear-gradient(180deg,#0b1f18,#0a1612); box-shadow:0 0 0 4px rgba(0,0,0,.4) inset}
-    .oracle::before{content:""; position:absolute; left:50%; top:-16px; transform:translateX(-50%); width:90px; height:90px; border-radius:50%; background:radial-gradient(circle, var(--orb) 0 28%, rgba(234,255,207,.4) 28% 55%, transparent 60%); filter:blur(.2px); animation:pulse 2.4s infinite ease-in-out}
-    @keyframes pulse{0%,100%{opacity:.85; transform:translateX(-50%) scale(1)} 50%{opacity:1; transform:translateX(-50%) scale(1.05)}}
+    .oracle{position:absolute; left:50%; bottom:140px; transform:translateX(-50%); width:220px; height:120px; border:3px solid #000; border-radius:12px; background:#0a1612}
+    .oracle::before{content:""; position:absolute; left:50%; top:-14px; transform:translateX(-50%); width:88px; height:88px; border-radius:50%; background:radial-gradient(circle, var(--orb) 0 28%, rgba(234,255,207,.4) 28% 55%, transparent 60%); animation:pulse 2.4s infinite ease-in-out}
+    @keyframes pulse{0%,100%{opacity:.9; transform:translateX(-50%) scale(1)}50%{opacity:1; transform:translateX(-50%) scale(1.05)}}
 
     /* Dialog */
-    .dialog{position:absolute; top:16px; left:50%; transform:translateX(-50%); max-width:min(92vw, 860px); background:rgba(12,26,20,.88); border:3px solid #000; border-radius:12px; padding:14px 16px; backdrop-filter: blur(2px); color:var(--mint2)}
-    .dialog p{margin:0; line-height:1.7; font-size:clamp(14px, 2.1vw, 18px); word-wrap:break-word; overflow-wrap:anywhere}
+    .dialog{position:absolute; top:16px; left:50%; transform:translateX(-50%); max-width:min(92vw,860px); background:rgba(12,26,20,.92); border:3px solid #000; border-radius:12px; padding:14px 16px}
+    .dialog p{margin:0; line-height:1.7; font-size:clamp(14px,2.1vw,18px)}
     .choices{margin-top:12px; display:grid; gap:10px}
-    .choice{padding:12px 14px; background:#0c1f19; border:3px solid #000; border-radius:10px; cursor:pointer; font-weight:700; color:var(--mint2)}
+    .choice{padding:12px 14px; background:#0c1f19; border:3px solid #000; border-radius:10px; cursor:pointer; font-weight:800; color:var(--mint2)}
     .choice:hover{filter:brightness(1.12); background:#12392e}
 
-    /* Figuren – stilisierte Pixel‑Sprites als eingebettete SVGs */
-    .char, .npc{position:absolute; bottom:140px; width:96px; height:128px; image-rendering: pixelated; background-size:cover; background-position:center; border:3px solid #000; border-radius:8px; box-shadow:0 0 0 4px rgba(0,0,0,.35) inset}
-
-    /* Nina (mint, blaue Augen) */
-    .char{left:10%; animation:bob 2.4s ease-in-out infinite; background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="96" height="128" shape-rendering="crispEdges"><rect width="96" height="128" fill="%230c1a14"/><rect x="36" y="22" width="24" height="24" fill="%23f3fff8"/><rect x="40" y="30" width="6" height="4" fill="%2307130f"/><rect x="50" y="30" width="6" height="4" fill="%2307130f"/><rect x="43" y="34" width="4" height="3" fill="%2300c4ff"/><rect x="53" y="34" width="4" height="3" fill="%2300c4ff"/>
-    <rect x="26" y="56" width="44" height="36" fill="%2318c08f"/>
-    <rect x="32" y="94" width="32" height="26" fill="%230a1a15"/></svg>');}
-
-    /* Oliver (Laborkittel, Brille) */
-    .npc{right:10%; animation:bob2 2.6s ease-in-out infinite; background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="96" height="128" shape-rendering="crispEdges"><rect width="96" height="128" fill="%230c1a14"/><rect x="36" y="22" width="24" height="24" fill="%23f3fff8"/><rect x="40" y="30" width="16" height="6" fill="%2322a39a"/><rect x="38" y="32" width="20" height="2" fill="%23000000"/>
-    <rect x="24" y="56" width="48" height="36" fill="%23ffffff"/>
-    <rect x="32" y="94" width="32" height="26" fill="%230a1a15"/></svg>');}
-
+    /* Figuren – einfache, robuste CSS‑Sprites (ohne Data‑URIs) */
+    .sprite{position:absolute; bottom:140px; width:86px; height:120px; border:3px solid #000; border-radius:8px; background:#0c1a14; box-shadow:0 0 0 4px rgba(0,0,0,.35) inset}
+    .sprite .head{position:absolute; left:28px; top:14px; width:30px; height:26px; background:#f3fff8; border:3px solid #000}
+    .sprite .eye{position:absolute; top:8px; width:4px; height:4px; background:#00c4ff}
+    .sprite .eye.l{left:8px} .sprite .eye.r{right:8px}
+    .sprite .body{position:absolute; left:18px; top:46px; width:50px; height:38px; border:3px solid #000}
+    .sprite.nina{left:10%}
+    .sprite.nina .body{background:#18c08f}
+    .sprite.oliver{right:10%}
+    .sprite.oliver .body{background:#ffffff}
+    .sprite.anim1{animation:bob 2.4s ease-in-out infinite}
+    .sprite.anim2{animation:bob2 2.6s ease-in-out infinite}
     @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
     @keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 
-    /* Statusleiste (reduziert) */
-    .status{display:flex; gap:12px; align-items:center; justify-content:space-between; padding:12px 16px; background:rgba(12,26,20,.7); border-top:3px solid #000}
+    /* Status */
+    .status{display:flex; gap:12px; align-items:center; justify-content:space-between; padding:12px 16px; background:rgba(12,26,20,.85); border-top:3px solid #000}
     .meter{flex:1; height:12px; background:#0a1a15; border:3px solid #000; border-radius:20px; overflow:hidden}
-    .meter>div{height:100%; width:0%; background:linear-gradient(90deg, var(--mint), var(--accent))}
-
-    .btn{padding:12px 16px; border:3px solid #000; border-radius:10px; font-weight:700; cursor:pointer}
+    .meter>div{height:100%; width:0%; background:linear-gradient(90deg,var(--mint),var(--accent))}
+    .btn{padding:12px 16px; border:3px solid #000; border-radius:10px; font-weight:800; cursor:pointer}
     .btn.primary{background:var(--mint); color:var(--ink)}
     .btn.secondary{background:#0c1f19; color:var(--mint2)}
-
-    a.link{color:var(--mint2)}
   </style>
 </head>
-<body class="crt">
+<body>
   <div class="wrap">
     <header>
       <h1>Mission Digitale Kultur – Das Förder‑Orakel</h1>
@@ -89,14 +76,22 @@
     </header>
 
     <section class="scene" id="scene">
-      <div class="bgLayer" aria-hidden="true"></div>
       <div class="dialog" id="dialog">
-        <p id="dialogText">Nacht im Förderlabor. <strong>Oliver Miescher</strong> aktiviert das Orakel. „Prüfe: Ist <em>Nina Blank</em> die ideale Wahl?“</p>
+        <p id="dialogText">Nacht im Förderlabor. Oliver Miescher aktiviert das Orakel. "Prüfe: Ist Nina Blank die ideale Wahl?"</p>
         <div class="choices" id="choices"></div>
       </div>
-      <div class="char" id="nina" title="Nina (mint)"></div>
-      <div class="npc" id="oliver" title="Oliver (Laborkittel)"></div>
-      <div class="oracle" id="oracle" title="Orakel‑Terminal"></div>
+
+      <!-- Figuren aus robusten CSS‑Sprites (keine externen Dateien nötig) -->
+      <div class="sprite nina anim1" id="nina" title="Nina">
+        <div class="head"><div class="eye l"></div><div class="eye r"></div></div>
+        <div class="body"></div>
+      </div>
+      <div class="sprite oliver anim2" id="oliver" title="Oliver">
+        <div class="head"><div class="eye l"></div><div class="eye r"></div></div>
+        <div class="body"></div>
+      </div>
+
+      <div class="oracle" title="Orakel"></div>
       <div class="ground"></div>
     </section>
 
@@ -111,73 +106,45 @@
   </div>
 
   <script>
-    /* ==========================
-       CONFIG – leicht anpassbar
-       ========================== */
+    // ===== Stabile, ASCII‑saubere Version =====
     const CONFIG = {
-      candidateName: "Nina Blank",
-      recruiterName: "Oliver Miescher",
-      links: {
-        cv: "#",          // ← hier CV/Portfolio-URL eintragen
-        email: "mailto:hello@example.com",
-        linkedin: "#"
-      },
-      // Fragen an Oliver über Nina – humorvoll, professionell
+      candidateName: 'Nina Blank',
+      recruiterName: 'Oliver Miescher',
+      links: { cv:'#', email:'mailto:hello@example.com', linkedin:'#' },
       questions: [
-        {
-          prompt: "Oliver, was braucht die ideale Spezialistin Digitale Kultur als Erstes?",
-          choices: [
-            { text: "Ein gutes Gleichgewicht aus Struktur und Kreativität.", value: +2 },
-            { text: "Kaffee. Sehr viel Kaffee.", value: +1 },
-            { text: "Eine Kristallkugel für Fördertrends.", value: 0 }
-          ]
-        },
-        {
-          prompt: "Wie geht Nina mit neuen digitalen Tools um?",
-          choices: [
-            { text: "Neugierig & reflektiert – testet, evaluiert und vermittelt verständlich.", value: +2 },
-            { text: "Installiert alles und hofft auf Magie.", value: 0 },
-            { text: "Papier forever – Stift ist Update 1.0.", value: 0 }
-          ]
-        },
-        {
-          prompt: "Wie erklärt Nina komplexe Förderlogik nach außen?",
-          choices: [
-            { text: "Klar, freundlich, inklusiv – ohne Buzzword‑Nebel.", value: +2 },
-            { text: "Mit einem 60‑seitigen PDF und Fußnoten‑Bossfight.", value: 0 },
-            { text: "Singend mit Ukulele (Bonus Charme).", value: +1 }
-          ]
-        },
-        {
-          prompt: "Welche Praxis bringt sie konkret mit?",
-          choices: [
-            { text: "Filmförderung, Projektleitung, IT‑Plattformen & Community‑Kontakt.", value: +2 },
-            { text: "Nur Theorie, aber hübsche Diagramme.", value: 0 },
-            { text: "Kaffee‑Controlling & Büro‑Parkour.", value: 0 }
-          ]
-        },
-        {
-          prompt: "Team‑Play im Alltag – wie arbeitet Nina?",
-          choices: [
-            { text: "Strukturiert, feedback‑offen, humorvoll (Agile/OKR).", value: +2 },
-            { text: "Allein im Turm mit WLAN.", value: 0 },
-            { text: "Nur nachts, wenn niemand online ist.", value: +1 }
-          ]
-        },
-        {
-          prompt: "Was motiviert sie?",
-          choices: [
-            { text: "Kulturschaffende stärken, Prozesse vereinfachen, Wirkung schaffen.", value: +2 },
-            { text: "Der Nervenkitzel der Deadline.", value: +1 },
-            { text: "Glitzer, Ruhm und WLAN‑Punkte.", value: 0 }
-          ]
-        }
+        { prompt:'Was braucht die ideale Spezialistin Digitale Kultur als Erstes?', choices:[
+          { text:'Ein gutes Gleichgewicht aus Struktur und Kreativität.', value:2 },
+          { text:'Kaffee. Sehr viel Kaffee.', value:1 },
+          { text:'Eine Kristallkugel für Fördertrends.', value:0 }
+        ]},
+        { prompt:'Wie geht Nina mit neuen digitalen Tools um?', choices:[
+          { text:'Neugierig & reflektiert – testet, evaluiert und vermittelt verständlich.', value:2 },
+          { text:'Installiert alles und hofft auf Magie.', value:0 },
+          { text:'Papier forever – Stift ist Update 1.0.', value:0 }
+        ]},
+        { prompt:'Wie erklärt Nina komplexe Förderlogik nach außen?', choices:[
+          { text:'Klar, freundlich, inklusiv – ohne Buzzword‑Nebel.', value:2 },
+          { text:'Mit einem 60‑seitigen PDF und Fußnoten‑Bossfight.', value:0 },
+          { text:'Singend mit Ukulele (Bonus Charme).', value:1 }
+        ]},
+        { prompt:'Welche Praxis bringt sie konkret mit?', choices:[
+          { text:'Filmförderung, Projektleitung, IT‑Plattformen & Community‑Kontakt.', value:2 },
+          { text:'Nur Theorie, aber hübsche Diagramme.', value:0 },
+          { text:'Kaffee‑Controlling & Büro‑Parkour.', value:0 }
+        ]},
+        { prompt:'Team‑Play im Alltag – wie arbeitet Nina?', choices:[
+          { text:'Strukturiert, feedback‑offen, humorvoll (Agile/OKR).', value:2 },
+          { text:'Allein im Turm mit WLAN.', value:0 },
+          { text:'Nur nachts, wenn niemand online ist.', value:1 }
+        ]},
+        { prompt:'Was motiviert sie?', choices:[
+          { text:'Kulturschaffende stärken, Prozesse vereinfachen, Wirkung schaffen.', value:2 },
+          { text:'Der Nervenkitzel der Deadline.', value:1 },
+          { text:'Glitzer, Ruhm und WLAN‑Punkte.', value:0 }
+        ]}
       ]
     };
 
-    /* ==================
-       Hilfsfunktionen
-       ================== */
     const $ = s => document.querySelector(s);
     const dialogText = $('#dialogText');
     const choices = $('#choices');
@@ -185,33 +152,23 @@
     const btnStart = $('#btnStart');
     const btnReset = $('#btnReset');
 
-    let state = { i: -1, score: 0, max: CONFIG.questions.reduce((a,q)=>a+Math.max(...q.choices.map(c=>c.value)),0) };
+    let state = { i:-1, score:0, max: CONFIG.questions.reduce((a,q)=> a + Math.max(...q.choices.map(c=>c.value)), 0) };
 
     function setMeter(){
-      const pct = Math.round((state.score / state.max) * 100);
-      meterFill.style.width = Math.min(100,pct)+"%";
-      meterFill.title = pct+"%";
+      const pct = Math.round((state.score/state.max)*100);
+      meterFill.style.width = Math.min(100, pct) + '%';
+      meterFill.title = pct + '%';
     }
 
     function say(text){
-      // Typewriter‑Effekt mit sicherem Umbruch
+      // Robuste Ausgabe ohne Sonderzeichen-Probleme
       choices.innerHTML = '';
-      dialogText.innerHTML = '';
-      const speed = 12;
-      let i = 0;
-      const id = setInterval(()=>{
-        dialogText.innerHTML += text[i] || '';
-        i++;
-        if(i>=text.length){ clearInterval(id); }
-      }, speed);
+      dialogText.textContent = text; // bewusst ohne HTML
     }
 
     function shuffle(arr){
       const a = arr.slice();
-      for(let i=a.length-1;i>0;i--){
-        const j = Math.floor(Math.random()*(i+1));
-        [a[i],a[j]] = [a[j],a[i]];
-      }
+      for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
       return a;
     }
 
@@ -221,7 +178,7 @@
         const b = document.createElement('button');
         b.className = 'choice';
         b.textContent = opt.text;
-        b.addEventListener('click',()=>pick(opt));
+        b.addEventListener('click', ()=> pick(opt));
         choices.appendChild(b);
       });
     }
@@ -230,59 +187,33 @@
       state.i++;
       if(state.i < CONFIG.questions.length){
         const q = CONFIG.questions[state.i];
-        const prompt = q.prompt.replace('Oliver, ','');
-        say(`💬 ${CONFIG.recruiterName}: „${prompt}”`);
+        say('Oliver Miescher: "' + q.prompt + '"');
         showChoices(q.choices);
         setMeter();
-      } else {
-        endScene();
-      }
+      } else { endScene(); }
     }
 
     function pick(opt){
-      state.score += opt.value;
-      setMeter();
-      const quips = [
-        "Orakel summt zustimmend …",
-        "Die Kontrollleuchten nicken im Takt …",
-        "Ein Modem pfeift nostalgisch …",
-        "Pixel‑Geister klatschen leise …"
-      ];
-      say(`✔ ${opt.text}
-<em>${quips[Math.floor(Math.random()*quips.length)]}</em>`);
-      setTimeout(next, 520);
+      state.score += opt.value; setMeter();
+      setTimeout(next, 450);
     }
 
     function endScene(){
       const pct = Math.round((state.score/state.max)*100);
-      const verdict = pct > 80 ? 'PERFEKTE KANDIDATIN FREIGESCHALTET' : 'STARKE ÜBEREINSTIMMUNG';
-      dialogText.innerHTML = `🧙‍♀️ <strong>Das Orakel hat gesprochen:</strong> <strong>${CONFIG.candidateName}</strong> ist die perfekte Wahl!<br>`+
-        `🧑‍🔬 <strong>${CONFIG.recruiterName}</strong>, Sie wissen, was Sie zu tun haben …<br>`+
-        `<span style="opacity:.85">(Match: ${pct}% – Praxis, klare Sprache, Team‑Play, digitale Neugier.)</span>`;
-
-      const panel = document.createElement('div');
-      panel.className = 'choices';
-      const aCV = document.createElement('a'); aCV.className='btn primary'; aCV.textContent='Mehr über Nina'; aCV.href=CONFIG.links.cv; aCV.target='_blank'; aCV.rel='noopener';
-      const aLI = document.createElement('a'); aLI.className='btn secondary'; aLI.textContent='LinkedIn'; aLI.href=CONFIG.links.linkedin; aLI.target='_blank'; aLI.rel='noopener';
-      const aMail = document.createElement('a'); aMail.className='btn secondary'; aMail.textContent='Kontakt'; aMail.href=CONFIG.links.email;
-      panel.append(aCV,aLI,aMail);
-      choices.innerHTML=''; choices.append(panel);
-
+      say('Das Orakel hat gesprochen: ' + CONFIG.candidateName + ' ist die perfekte Wahl! ' + CONFIG.recruiterName + ', Sie wissen, was Sie zu tun haben. (Match: ' + pct + '%)');
+      const panel = document.createElement('div'); panel.className = 'choices';
+      const a1 = document.createElement('a'); a1.className='btn primary'; a1.textContent='Mehr über Nina'; a1.href=CONFIG.links.cv; a1.target='_blank'; a1.rel='noopener';
+      const a2 = document.createElement('a'); a2.className='btn secondary'; a2.textContent='LinkedIn'; a2.href=CONFIG.links.linkedin; a2.target='_blank'; a2.rel='noopener';
+      const a3 = document.createElement('a'); a3.className='btn secondary'; a3.textContent='Kontakt'; a3.href=CONFIG.links.email;
+      panel.append(a1,a2,a3); choices.innerHTML=''; choices.append(panel);
       btnStart.style.display='none'; btnReset.style.display='inline-block';
     }
 
-    function reset(){
-      state = { i:-1, score:0, max: state.max };
-      say('Nacht im Förderlabor. Oliver Miescher aktiviert das Orakel. „Prüfe: Ist Nina Blank die ideale Wahl?“');
-      choices.innerHTML='';
-      btnStart.style.display='inline-block'; btnReset.style.display='none';
-      setMeter();
-    }
+    function reset(){ state={ i:-1, score:0, max: state.max }; say('Nacht im Förderlabor. Oliver Miescher aktiviert das Orakel. "Prüfe: Ist Nina Blank die ideale Wahl?"'); choices.innerHTML=''; btnStart.style.display='inline-block'; btnReset.style.display='none'; setMeter(); }
 
     btnStart.addEventListener('click', ()=>{ btnStart.style.display='none'; next(); });
     btnReset.addEventListener('click', reset);
 
-    // Init
     setMeter();
   </script>
 </body>
