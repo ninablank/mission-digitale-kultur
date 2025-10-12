@@ -4,68 +4,46 @@
   <meta charset="UTF-8" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mission Digitale Kultur – Das Förder‑Orakel (Mint Edition – Safe Build)</title>
+  <title>Mission Digitale Kultur – Das Förder‑Orakel (Mint Edition – SVG Sprites)</title>
   <meta name="description" content="Retro‑Quiz im mintgrünen Förderlabor. Oliver Miescher befragt das Orakel – Ergebnis: Nina Blank ist die ideale Wahl." />
   <style>
-    /* ===== Farbwelt ===== */
     :root{
-      --bg:#0e1f18;  /* dunkles Grün */
-      --bg2:#133127; /* Verlauf */
-      --mint:#9ff7c2;  /* Akzent */
-      --mint2:#e7fff3; /* heller Text */
-      --ink:#07130f;   /* sehr dunkles Grün */
-      --panel:#0c1a14; /* Pane */
-      --orb:#eaffcf;   /* Orakel */
-      --accent:#18c08f;/* Smaragd */
+      --bg:#0e1f18; --bg2:#133127; --mint:#9ff7c2; --mint2:#e7fff3; --ink:#07130f; --panel:#0c1a14; --orb:#eaffcf; --accent:#18c08f;
     }
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--mint2);font-family:system-ui, -apple-system, Segoe UI, Roboto, Arial}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),var(--bg2));color:var(--mint2);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
     body{display:flex;min-height:100vh}
 
-    /* Container */
-    .wrap{display:flex; flex-direction:column; width:100%; max-width:980px; margin:0 auto}
+    .wrap{display:flex;flex-direction:column;width:100%;max-width:980px;margin:0 auto}
 
-    /* Header */
-    header{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:14px 16px; background:rgba(12,26,20,.75); border-bottom:3px solid #000}
-    header h1{margin:0; font-size:20px; font-weight:800}
-    .badge{background:var(--mint); color:var(--ink); border:3px solid #000; border-radius:10px; padding:6px 10px; font-weight:700}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:rgba(12,26,20,.85);border-bottom:3px solid #000}
+    header h1{margin:0;font-size:20px;font-weight:800}
+    .badge{background:var(--mint);color:var(--ink);border:3px solid #000;border-radius:10px;padding:6px 10px;font-weight:700}
 
-    /* Szene */
-    .scene{position:relative; flex:1; min-height:60vh; border-bottom:3px solid #000; overflow:hidden; background:radial-gradient(70% 60% at 50% 20%, rgba(24,192,143,.18), transparent 60%)}
-    .ground{position:absolute; left:0; right:0; bottom:0; height:140px; background:linear-gradient(180deg,#0f241d,#0a1a15); border-top:3px solid #000}
-    .oracle{position:absolute; left:50%; bottom:140px; transform:translateX(-50%); width:220px; height:120px; border:3px solid #000; border-radius:12px; background:#0a1612}
-    .oracle::before{content:""; position:absolute; left:50%; top:-14px; transform:translateX(-50%); width:88px; height:88px; border-radius:50%; background:radial-gradient(circle, var(--orb) 0 28%, rgba(234,255,207,.4) 28% 55%, transparent 60%); animation:pulse 2.4s infinite ease-in-out}
-    @keyframes pulse{0%,100%{opacity:.9; transform:translateX(-50%) scale(1)}50%{opacity:1; transform:translateX(-50%) scale(1.05)}}
+    .scene{position:relative;flex:1;min-height:68vh;border-bottom:3px solid #000;overflow:hidden;background:radial-gradient(70% 60% at 50% 20%, rgba(24,192,143,.18), transparent 60%)}
+    .ground{position:absolute;left:0;right:0;bottom:0;height:160px;background:linear-gradient(180deg,#0f241d,#0a1a15);border-top:3px solid #000}
+    .oracle{position:absolute;left:50%;bottom:160px;transform:translateX(-50%);width:240px;height:124px;border:3px solid #000;border-radius:12px;background:#0a1612;z-index:2}
+    .oracle::before{content:"";position:absolute;left:50%;top:-16px;transform:translateX(-50%);width:96px;height:96px;border-radius:50%;background:radial-gradient(circle,var(--orb) 0 30%, rgba(234,255,207,.45) 30% 58%, transparent 60%);animation:pulse 2.4s infinite ease-in-out}
+    @keyframes pulse{0%,100%{opacity:.9;transform:translateX(-50%) scale(1)}50%{opacity:1;transform:translateX(-50%) scale(1.06)}}
 
-    /* Dialog */
-    .dialog{position:absolute; top:16px; left:50%; transform:translateX(-50%); max-width:min(92vw,860px); background:rgba(12,26,20,.92); border:3px solid #000; border-radius:12px; padding:14px 16px}
-    .dialog p{margin:0; line-height:1.7; font-size:clamp(14px,2.1vw,18px)}
-    .choices{margin-top:12px; display:grid; gap:10px}
-    .choice{padding:12px 14px; background:#0c1f19; border:3px solid #000; border-radius:10px; cursor:pointer; font-weight:800; color:var(--mint2)}
-    .choice:hover{filter:brightness(1.12); background:#12392e}
+    .dialog{position:absolute;top:16px;left:50%;transform:translateX(-50%);max-width:min(92vw,860px);background:rgba(12,26,20,.95);border:3px solid #000;border-radius:12px;padding:14px 16px;z-index:3}
+    .dialog p{margin:0;line-height:1.7;font-size:clamp(14px,2.1vw,18px)}
+    .choices{margin-top:12px;display:grid;gap:10px}
+    .choice{padding:12px 14px;background:#0c1f19;border:3px solid #000;border-radius:10px;cursor:pointer;font-weight:800;color:var(--mint2)}
+    .choice:hover{filter:brightness(1.12);background:#12392e}
 
-    /* Figuren – einfache, robuste CSS‑Sprites (ohne Data‑URIs) */
-    .sprite{position:absolute; bottom:140px; width:86px; height:120px; border:3px solid #000; border-radius:8px; background:#0c1a14; box-shadow:0 0 0 4px rgba(0,0,0,.35) inset}
-    .sprite .head{position:absolute; left:28px; top:14px; width:30px; height:26px; background:#f3fff8; border:3px solid #000}
-    .sprite .eye{position:absolute; top:8px; width:4px; height:4px; background:#00c4ff}
-    .sprite .eye.l{left:8px} .sprite .eye.r{right:8px}
-    .sprite .body{position:absolute; left:18px; top:46px; width:50px; height:38px; border:3px solid #000}
-    .sprite.nina{left:10%}
-    .sprite.nina .body{background:#18c08f}
-    .sprite.oliver{right:10%}
-    .sprite.oliver .body{background:#ffffff}
-    .sprite.anim1{animation:bob 2.4s ease-in-out infinite}
-    .sprite.anim2{animation:bob2 2.6s ease-in-out infinite}
-    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
-    @keyframes bob2{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
+    /* SVG‑Sprites sichtbar über allem */
+    .sprite{position:absolute;bottom:160px;width:120px;height:160px;z-index:2;pointer-events:none}
+    .sprite svg{width:100%;height:100%;image-rendering:pixelated}
+    .sprite.nina{left:8%}
+    .sprite.oliver{right:8%}
 
-    /* Status */
-    .status{display:flex; gap:12px; align-items:center; justify-content:space-between; padding:12px 16px; background:rgba(12,26,20,.85); border-top:3px solid #000}
-    .meter{flex:1; height:12px; background:#0a1a15; border:3px solid #000; border-radius:20px; overflow:hidden}
-    .meter>div{height:100%; width:0%; background:linear-gradient(90deg,var(--mint),var(--accent))}
-    .btn{padding:12px 16px; border:3px solid #000; border-radius:10px; font-weight:800; cursor:pointer}
-    .btn.primary{background:var(--mint); color:var(--ink)}
-    .btn.secondary{background:#0c1f19; color:var(--mint2)}
+    .status{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:12px 16px;background:rgba(12,26,20,.9);border-top:3px solid #000}
+    .meter{flex:1;height:12px;background:#0a1a15;border:3px solid #000;border-radius:20px;overflow:hidden}
+    .meter>div{height:100%;width:0%;background:linear-gradient(90deg,var(--mint),var(--accent))}
+    .btn{padding:12px 16px;border:3px solid #000;border-radius:10px;font-weight:800;cursor:pointer}
+    .btn.primary{background:var(--mint);color:var(--ink)}
+    .btn.secondary{background:#0c1f19;color:var(--mint2)}
   </style>
 </head>
 <body>
@@ -81,14 +59,34 @@
         <div class="choices" id="choices"></div>
       </div>
 
-      <!-- Figuren aus robusten CSS‑Sprites (keine externen Dateien nötig) -->
-      <div class="sprite nina anim1" id="nina" title="Nina">
-        <div class="head"><div class="eye l"></div><div class="eye r"></div></div>
-        <div class="body"></div>
+      <!-- Sichtbare SVG‑Sprites (LucasArts‑angehaucht, abstrahiert) -->
+      <div class="sprite nina" aria-label="Nina">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 128" shape-rendering="crispEdges">
+          <rect width="96" height="128" fill="#0c1a14"/>
+          <!-- Kopf -->
+          <rect x="34" y="18" width="28" height="24" fill="#f3fff8" stroke="#000" stroke-width="3"/>
+          <!-- Augen blau -->
+          <rect x="40" y="28" width="4" height="4" fill="#00c4ff"/>
+          <rect x="52" y="28" width="4" height="4" fill="#00c4ff"/>
+          <!-- Oberteil mint -->
+          <rect x="24" y="52" width="48" height="36" fill="#18c08f" stroke="#000" stroke-width="3"/>
+          <!-- Hose dunkel -->
+          <rect x="30" y="90" width="36" height="26" fill="#0a1a15"/>
+        </svg>
       </div>
-      <div class="sprite oliver anim2" id="oliver" title="Oliver">
-        <div class="head"><div class="eye l"></div><div class="eye r"></div></div>
-        <div class="body"></div>
+
+      <div class="sprite oliver" aria-label="Oliver im Laborkittel">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 128" shape-rendering="crispEdges">
+          <rect width="96" height="128" fill="#0c1a14"/>
+          <!-- Kopf -->
+          <rect x="34" y="18" width="28" height="24" fill="#f3fff8" stroke="#000" stroke-width="3"/>
+          <!-- Brillenbalken -->
+          <rect x="38" y="26" width="20" height="6" fill="#22a39a"/>
+          <!-- Kittel weiß -->
+          <rect x="24" y="52" width="48" height="36" fill="#ffffff" stroke="#000" stroke-width="3"/>
+          <!-- Hose dunkel -->
+          <rect x="30" y="90" width="36" height="26" fill="#0a1a15"/>
+        </svg>
       </div>
 
       <div class="oracle" title="Orakel"></div>
@@ -106,12 +104,10 @@
   </div>
 
   <script>
-    // ===== Stabile, ASCII‑saubere Version =====
     const CONFIG = {
-      candidateName: 'Nina Blank',
-      recruiterName: 'Oliver Miescher',
-      links: { cv:'#', email:'mailto:hello@example.com', linkedin:'#' },
-      questions: [
+      candidateName:'Nina Blank', recruiterName:'Oliver Miescher',
+      links:{ cv:'#', email:'mailto:hello@example.com', linkedin:'#' },
+      questions:[
         { prompt:'Was braucht die ideale Spezialistin Digitale Kultur als Erstes?', choices:[
           { text:'Ein gutes Gleichgewicht aus Struktur und Kreativität.', value:2 },
           { text:'Kaffee. Sehr viel Kaffee.', value:1 },
@@ -145,75 +141,24 @@
       ]
     };
 
-    const $ = s => document.querySelector(s);
-    const dialogText = $('#dialogText');
-    const choices = $('#choices');
-    const meterFill = $('#meterFill');
-    const btnStart = $('#btnStart');
-    const btnReset = $('#btnReset');
+    const $=s=>document.querySelector(s);
+    const dialogText=$('#dialogText'), choices=$('#choices'), meterFill=$('#meterFill');
+    const btnStart=$('#btnStart'), btnReset=$('#btnReset');
 
-    let state = { i:-1, score:0, max: CONFIG.questions.reduce((a,q)=> a + Math.max(...q.choices.map(c=>c.value)), 0) };
+    let state={ i:-1, score:0, max:CONFIG.questions.reduce((a,q)=>a+Math.max(...q.choices.map(c=>c.value)),0)};
 
-    function setMeter(){
-      const pct = Math.round((state.score/state.max)*100);
-      meterFill.style.width = Math.min(100, pct) + '%';
-      meterFill.title = pct + '%';
-    }
+    function setMeter(){ const pct=Math.round((state.score/state.max)*100); meterFill.style.width=Math.min(100,pct)+'%'; meterFill.title=pct+'%'; }
+    function say(t){ choices.innerHTML=''; dialogText.textContent=t; }
+    function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
 
-    function say(text){
-      // Robuste Ausgabe ohne Sonderzeichen-Probleme
-      choices.innerHTML = '';
-      dialogText.textContent = text; // bewusst ohne HTML
-    }
+    function showChoices(list){ choices.innerHTML=''; shuffle(list).forEach(opt=>{ const b=document.createElement('button'); b.className='choice'; b.textContent=opt.text; b.onclick=()=>pick(opt); choices.appendChild(b); }); }
+    function next(){ state.i++; if(state.i<CONFIG.questions.length){ const q=CONFIG.questions[state.i]; say('Oliver Miescher: "'+q.prompt+'"'); showChoices(q.choices); setMeter(); } else endScene(); }
+    function pick(opt){ state.score+=opt.value; setMeter(); setTimeout(next, 450); }
+    function endScene(){ const pct=Math.round((state.score/state.max)*100); say('Das Orakel hat gesprochen: '+CONFIG.candidateName+' ist die perfekte Wahl! '+CONFIG.recruiterName+', Sie wissen, was Sie zu tun haben. (Match: '+pct+'%)'); const p=document.createElement('div'); p.className='choices'; const a1=document.createElement('a'); a1.className='btn primary'; a1.textContent='Mehr über Nina'; a1.href=CONFIG.links.cv; a1.target='_blank'; a1.rel='noopener'; const a2=document.createElement('a'); a2.className='btn secondary'; a2.textContent='LinkedIn'; a2.href=CONFIG.links.linkedin; a2.target='_blank'; a2.rel='noopener'; const a3=document.createElement('a'); a3.className='btn secondary'; a3.textContent='Kontakt'; a3.href=CONFIG.links.email; p.append(a1,a2,a3); choices.innerHTML=''; choices.append(p); btnStart.style.display='none'; btnReset.style.display='inline-block'; }
+    function reset(){ state={ i:-1, score:0, max:state.max }; say('Nacht im Förderlabor. Oliver Miescher aktiviert das Orakel. "Prüfe: Ist Nina Blank die ideale Wahl?"'); choices.innerHTML=''; btnStart.style.display='inline-block'; btnReset.style.display='none'; setMeter(); }
 
-    function shuffle(arr){
-      const a = arr.slice();
-      for(let i=a.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
-      return a;
-    }
-
-    function showChoices(list){
-      choices.innerHTML = '';
-      shuffle(list).forEach(opt=>{
-        const b = document.createElement('button');
-        b.className = 'choice';
-        b.textContent = opt.text;
-        b.addEventListener('click', ()=> pick(opt));
-        choices.appendChild(b);
-      });
-    }
-
-    function next(){
-      state.i++;
-      if(state.i < CONFIG.questions.length){
-        const q = CONFIG.questions[state.i];
-        say('Oliver Miescher: "' + q.prompt + '"');
-        showChoices(q.choices);
-        setMeter();
-      } else { endScene(); }
-    }
-
-    function pick(opt){
-      state.score += opt.value; setMeter();
-      setTimeout(next, 450);
-    }
-
-    function endScene(){
-      const pct = Math.round((state.score/state.max)*100);
-      say('Das Orakel hat gesprochen: ' + CONFIG.candidateName + ' ist die perfekte Wahl! ' + CONFIG.recruiterName + ', Sie wissen, was Sie zu tun haben. (Match: ' + pct + '%)');
-      const panel = document.createElement('div'); panel.className = 'choices';
-      const a1 = document.createElement('a'); a1.className='btn primary'; a1.textContent='Mehr über Nina'; a1.href=CONFIG.links.cv; a1.target='_blank'; a1.rel='noopener';
-      const a2 = document.createElement('a'); a2.className='btn secondary'; a2.textContent='LinkedIn'; a2.href=CONFIG.links.linkedin; a2.target='_blank'; a2.rel='noopener';
-      const a3 = document.createElement('a'); a3.className='btn secondary'; a3.textContent='Kontakt'; a3.href=CONFIG.links.email;
-      panel.append(a1,a2,a3); choices.innerHTML=''; choices.append(panel);
-      btnStart.style.display='none'; btnReset.style.display='inline-block';
-    }
-
-    function reset(){ state={ i:-1, score:0, max: state.max }; say('Nacht im Förderlabor. Oliver Miescher aktiviert das Orakel. "Prüfe: Ist Nina Blank die ideale Wahl?"'); choices.innerHTML=''; btnStart.style.display='inline-block'; btnReset.style.display='none'; setMeter(); }
-
-    btnStart.addEventListener('click', ()=>{ btnStart.style.display='none'; next(); });
-    btnReset.addEventListener('click', reset);
-
+    btnStart.onclick=()=>{ btnStart.style.display='none'; next(); };
+    btnReset.onclick=reset;
     setMeter();
   </script>
 </body>
