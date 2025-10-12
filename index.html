@@ -7,7 +7,7 @@
   <title>Mission Digitale Kultur – Das Förder‑Orakel (Mint Edition – SVG Sprites)</title>
   <meta name="description" content="Retro‑Quiz im mintgrünen Förderlabor. Oliver Miescher befragt das Orakel – Ergebnis: Nina Blank ist die ideale Wahl." />
   <style>
-   :root{
+  :root{
     --bg:#0e1f18; --bg2:#133127; --mint:#9ff7c2; --mint2:#e7fff3;
     --ink:#07130f; --orb:#eaffcf; --accent:#18c08f;
   }
@@ -20,7 +20,7 @@
     color:var(--mint2);
     font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
   }
-  body{display:flex;min-height:100vh}
+  body{display:flex;min-height:100vh;overflow:hidden}
 
   /* Layout */
   .wrap{display:flex;flex-direction:column;width:100%;max-width:980px;margin:0 auto}
@@ -45,20 +45,14 @@
     min-height:68vh;
     border-bottom:3px solid #000;
     overflow:hidden;
-    background: url('scene.png') center bottom / cover no-repeat,
+    background: url('scene.gif') center bottom / cover no-repeat,
                 linear-gradient(180deg,var(--bg),var(--bg2));
-  }
-
-  .ground{
-    position:absolute;left:0;right:0;bottom:0;
-    height:160px;background:linear-gradient(180deg,#0f241d,#0a1a15);
-    border-top:3px solid #000;
   }
 
   /* Orakel-Kugel */
   .oracle{
     position:absolute;
-    left:50%;bottom:160px;
+    left:50%;bottom:100px;
     transform:translateX(-50%);
     width:240px;height:124px;
     border:3px solid #000;border-radius:12px;
@@ -77,12 +71,14 @@
     50%{opacity:1;transform:translateX(-50%) scale(1.06)}
   }
 
-  /* Dialogfeld */
+  /* Dialogfeld – LucasArts-Look */
   .dialog{
     position:absolute;top:16px;left:50%;transform:translateX(-50%);
     max-width:min(92vw,860px);
-    background:rgba(12,26,20,.95);
-    border:3px solid #000;border-radius:12px;
+    background:rgba(12,26,20,.93);
+    border:2px solid #0efcb4;
+    border-radius:12px;
+    box-shadow:0 0 16px rgba(24,192,143,.4);
     padding:14px 16px;z-index:3;
   }
   .dialog p{margin:0;line-height:1.7;font-size:clamp(14px,2.1vw,18px)}
@@ -95,14 +91,34 @@
   }
   .choice:hover{filter:brightness(1.12);background:#12392e}
 
-  /* Statusleiste */
+  /* Bodenstreifen – wie in alten Adventures */
+  .ground{
+    position:absolute;
+    left:0;right:0;bottom:0;
+    height:80px; /* vorher 160px */
+    background:linear-gradient(180deg,#0f241d,#0a1a15);
+    border-top:3px solid #000;
+    opacity:0.8;
+  }
+
+  /* Statusleiste – halbtransparent über Boden */
   .status{
-    display:flex;gap:12px;align-items:center;justify-content:space-between;
-    padding:12px 16px;background:rgba(12,26,20,.9);
-    border-top:3px solid #000
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    display:flex;
+    gap:12px;
+    align-items:center;
+    justify-content:space-between;
+    padding:6px 12px; /* kompakter */
+    background:rgba(12,26,20,.7);
+    border-top:2px solid #000;
+    font-size:14px;
+    z-index:5;
   }
   .meter{
-    flex:1;height:12px;background:#0a1a15;border:3px solid #000;
+    flex:1;height:10px;background:#0a1a15;border:2px solid #000;
     border-radius:20px;overflow:hidden
   }
   .meter>div{
@@ -110,17 +126,15 @@
     background:linear-gradient(90deg,var(--mint),var(--accent))
   }
   .btn{
-    padding:12px 16px;border:3px solid #000;border-radius:10px;
+    padding:10px 14px;border:3px solid #000;border-radius:10px;
     font-weight:800;cursor:pointer
   }
   .btn.primary{background:var(--mint);color:var(--ink)}
   .btn.secondary{background:#0c1f19;color:var(--mint2)}
 
-  /* Pixeloptik für Text und Orakel */
+  /* Pixeloptik */
   .dialog, .oracle{
     image-rendering: pixelated;
-  }
-    .btn.secondary{background:#0c1f19;color:var(--mint2)}
   </style>
 </head>
 <body>
