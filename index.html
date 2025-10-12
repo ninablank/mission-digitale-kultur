@@ -2,160 +2,140 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mission Digitale Kultur – Das Förder‑Orakel (Mint Edition – SVG Sprites)</title>
-  <meta name="description" content="Retro‑Quiz im mintgrünen Förderlabor. Oliver Miescher befragt das Orakel – Ergebnis: Nina Blank ist die ideale Wahl." />
+  <title>Mission Digitale Kultur – Das Förder-Orakel</title>
   <style>
-  :root{
-    --bg:#0e1f18; --bg2:#133127; --mint:#9ff7c2; --mint2:#e7fff3;
-    --ink:#07130f; --orb:#eaffcf; --accent:#18c08f;
-  }
-
-  *{box-sizing:border-box}
-  html,body{
-    height:100%;
-    margin:0;
-    background:linear-gradient(180deg,var(--bg),var(--bg2));
-    color:var(--mint2);
-    font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  }
-  body{display:flex;min-height:100vh;overflow:hidden}
-
-  /* Layout */
-  .wrap{display:flex;flex-direction:column;width:100%;max-width:980px;margin:0 auto}
-
-  header{
-    display:flex;align-items:center;justify-content:space-between;
-    gap:12px;padding:14px 16px;
-    background:rgba(12,26,20,.85);
-    border-bottom:3px solid #000
-  }
-  header h1{margin:0;font-size:20px;font-weight:800}
-  .badge{
-    background:var(--mint);color:var(--ink);
-    border:3px solid #000;border-radius:10px;
-    padding:6px 10px;font-weight:700
-  }
-
-  /* Szene mit Pixel-Hintergrund */
-  .scene{
-    position:relative;
-    flex:1;
-    min-height:68vh;
-    border-bottom:3px solid #000;
-    overflow:hidden;
-    background: url('scene.gif') center bottom / cover no-repeat,
-                linear-gradient(180deg,var(--bg),var(--bg2));
-  }
-
-  /* Orakel-Kugel */
-  .oracle{
-    position:absolute;
-    left:50%;bottom:100px;
-    transform:translateX(-50%);
-    width:240px;height:124px;
-    border:3px solid #000;border-radius:12px;
-    background:#0a1612;z-index:2;
-  }
-  .oracle::before{
-    content:"";
-    position:absolute;left:50%;top:-16px;
-    transform:translateX(-50%);
-    width:96px;height:96px;border-radius:50%;
-    background:radial-gradient(circle,var(--orb) 0 30%,rgba(234,255,207,.45) 30% 58%,transparent 60%);
-    animation:pulse 2.4s infinite ease-in-out;
-  }
-  @keyframes pulse{
-    0%,100%{opacity:.9;transform:translateX(-50%) scale(1)}
-    50%{opacity:1;transform:translateX(-50%) scale(1.06)}
-  }
-
-  /* Dialogfeld – LucasArts-Look */
-  .dialog{
-    position:absolute;top:16px;left:50%;transform:translateX(-50%);
-    max-width:min(92vw,860px);
-    background:rgba(12,26,20,.93);
-    border:2px solid #0efcb4;
-    border-radius:12px;
-    box-shadow:0 0 16px rgba(24,192,143,.4);
-    padding:14px 16px;z-index:3;
-  }
-  .dialog p{margin:0;line-height:1.7;font-size:clamp(14px,2.1vw,18px)}
-
-  .choices{margin-top:12px;display:grid;gap:10px}
-  .choice{
-    padding:12px 14px;
-    background:#0c1f19;border:3px solid #000;border-radius:10px;
-    cursor:pointer;font-weight:800;color:var(--mint2)
-  }
-  .choice:hover{filter:brightness(1.12);background:#12392e}
-
-  /* Bodenstreifen – wie in alten Adventures */
-  .ground{
-    position:absolute;
-    left:0;right:0;bottom:0;
-    height:80px; /* vorher 160px */
-    background:linear-gradient(180deg,#0f241d,#0a1a15);
-    border-top:3px solid #000;
-    opacity:0.8;
-  }
-
-  /* Statusleiste – halbtransparent über Boden */
-  .status{
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    display:flex;
-    gap:12px;
-    align-items:center;
-    justify-content:space-between;
-    padding:6px 12px; /* kompakter */
-    background:rgba(12,26,20,.7);
-    border-top:2px solid #000;
-    font-size:14px;
-    z-index:5;
-  }
-  .meter{
-    flex:1;height:10px;background:#0a1a15;border:2px solid #000;
-    border-radius:20px;overflow:hidden
-  }
-  .meter>div{
-    height:100%;width:0%;
-    background:linear-gradient(90deg,var(--mint),var(--accent))
-  }
-  .btn{
-    padding:10px 14px;border:3px solid #000;border-radius:10px;
-    font-weight:800;cursor:pointer
-  }
-  .btn.primary{background:var(--mint);color:var(--ink)}
-  .btn.secondary{background:#0c1f19;color:var(--mint2)}
-
-  /* Pixeloptik */
-  .dialog, .oracle{
-    image-rendering: pixelated;
+    :root{
+      --bg:#0e1f18; --bg2:#133127; --mint:#9ff7c2; --mint2:#e7fff3;
+      --ink:#07130f; --orb:#eaffcf; --accent:#18c08f;
+    }
+    *{box-sizing:border-box}
+    html,body{
+      height:100%;
+      margin:0;
+      background:linear-gradient(180deg,var(--bg),var(--bg2));
+      color:var(--mint2);
+      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+    }
+    body{display:flex;min-height:100vh;overflow:hidden}
+    .wrap{display:flex;flex-direction:column;width:100%;max-width:980px;margin:0 auto}
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      gap:12px;padding:14px 16px;
+      background:rgba(12,26,20,.85);
+      border-bottom:3px solid #000
+    }
+    header h1{margin:0;font-size:20px;font-weight:800}
+    .badge{
+      background:var(--mint);color:var(--ink);
+      border:3px solid #000;border-radius:10px;
+      padding:6px 10px;font-weight:700
+    }
+    .scene{
+      position:relative;
+      flex:1;
+      min-height:68vh;
+      border-bottom:3px solid #000;
+      overflow:hidden;
+      background: url('scene.gif') center bottom / cover no-repeat,
+                  linear-gradient(180deg,var(--bg),var(--bg2));
+    }
+    .oracle{
+      position:absolute;
+      left:50%;bottom:100px;
+      transform:translateX(-50%);
+      width:240px;height:124px;
+      border:3px solid #000;border-radius:12px;
+      background:#0a1612;z-index:2;
+    }
+    .oracle::before{
+      content:"";
+      position:absolute;left:50%;top:-16px;
+      transform:translateX(-50%);
+      width:96px;height:96px;border-radius:50%;
+      background:radial-gradient(circle,var(--orb) 0 30%,rgba(234,255,207,.45) 30% 58%,transparent 60%);
+      animation:pulse 2.4s infinite ease-in-out;
+    }
+    @keyframes pulse{
+      0%,100%{opacity:.9;transform:translateX(-50%) scale(1)}
+      50%{opacity:1;transform:translateX(-50%) scale(1.06)}
+    }
+    .dialog{
+      position:absolute;top:16px;left:50%;transform:translateX(-50%);
+      max-width:min(92vw,860px);
+      background:rgba(12,26,20,.93);
+      border:2px solid #0efcb4;
+      border-radius:12px;
+      box-shadow:0 0 16px rgba(24,192,143,.4);
+      padding:14px 16px;z-index:3;
+    }
+    .dialog p{margin:0;line-height:1.7;font-size:clamp(14px,2.1vw,18px)}
+    .choices{margin-top:12px;display:grid;gap:10px}
+    .choice{
+      padding:12px 14px;
+      background:#0c1f19;border:3px solid #000;border-radius:10px;
+      cursor:pointer;font-weight:800;color:var(--mint2)
+    }
+    .choice:hover{filter:brightness(1.12);background:#12392e}
+    .ground{
+      position:absolute;
+      left:0;right:0;bottom:0;
+      height:80px;
+      background:linear-gradient(180deg,#0f241d,#0a1a15);
+      border-top:3px solid #000;
+      opacity:0.8;
+    }
+    .status{
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      padding:6px 12px;
+      background:rgba(12,26,20,.7);
+      border-top:2px solid #000;
+      font-size:14px;
+      z-index:5;
+    }
+    .meter{
+      flex:1;height:10px;background:#0a1a15;border:2px solid #000;
+      border-radius:20px;overflow:hidden
+    }
+    .meter>div{
+      height:100%;width:0%;
+      background:linear-gradient(90deg,var(--mint),var(--accent))
+    }
+    .btn{
+      padding:10px 14px;border:3px solid #000;border-radius:10px;
+      font-weight:800;cursor:pointer
+    }
+    .btn.primary{background:var(--mint);color:var(--ink)}
+    .btn.secondary{background:#0c1f19;color:var(--mint2)}
+    .dialog, .oracle{image-rendering:pixelated;}
   </style>
 </head>
 <body>
   <div class="wrap">
     <header>
-      <h1>Mission Digitale Kultur – Das Förder‑Orakel</h1>
+      <h1>Mission Digitale Kultur – Das Förder-Orakel</h1>
       <div class="badge">Mint Edition</div>
     </header>
-
     <section class="scene" id="scene">
       <div class="dialog" id="dialog">
-        <p id="dialogText">Nacht im Förderlabor. Oliver Miescher aktiviert das Orakel. "Prüfe: Ist Nina Blank die ideale Wahl?"</p>
+        <p id="dialogText">
+          Nacht im Förderlabor. Oliver Miescher aktiviert das Orakel. 
+          "Prüfe: Ist Nina Blank die ideale Wahl?"
+        </p>
         <div class="choices" id="choices"></div>
       </div>
-
       <div class="oracle" title="Orakel"></div>
       <div class="ground"></div>
     </section>
-
     <div class="status">
-      <div class="badge">Match‑Level</div>
+      <div class="badge">Match-Level</div>
       <div class="meter"><div id="meterFill"></div></div>
       <div class="actions">
         <button class="btn secondary" id="btnReset" style="display:none">Neu starten</button>
@@ -163,10 +143,10 @@
       </div>
     </div>
   </div>
-
   <script>
     const CONFIG = {
-      candidateName:'Nina Blank', recruiterName:'Oliver Miescher',
+      candidateName:'Nina Blank',
+      recruiterName:'Oliver Miescher',
       links:{ cv:'#', email:'mailto:hello@example.com', linkedin:'#' },
       questions:[
         { prompt:'Was braucht die ideale Spezialistin Digitale Kultur als Erstes?', choices:[
@@ -180,44 +160,39 @@
           { text:'Papier forever – Stift ist Update 1.0.', value:0 }
         ]},
         { prompt:'Wie erklärt Nina komplexe Förderlogik nach außen?', choices:[
-          { text:'Klar, freundlich, inklusiv – ohne Buzzword‑Nebel.', value:2 },
-          { text:'Mit einem 60‑seitigen PDF und Fußnoten‑Bossfight.', value:0 },
+          { text:'Klar, freundlich, inklusiv – ohne Buzzword-Nebel.', value:2 },
+          { text:'Mit einem 60-seitigen PDF und Fußnoten-Bossfight.', value:0 },
           { text:'Singend mit Ukulele (Bonus Charme).', value:1 }
         ]},
         { prompt:'Welche Praxis bringt sie konkret mit?', choices:[
-          { text:'Filmförderung, Projektleitung, IT‑Plattformen & Community‑Kontakt.', value:2 },
+          { text:'Filmförderung, Projektleitung, IT-Plattformen & Community-Kontakt.', value:2 },
           { text:'Nur Theorie, aber hübsche Diagramme.', value:0 },
-          { text:'Kaffee‑Controlling & Büro‑Parkour.', value:0 }
+          { text:'Kaffee-Controlling & Büro-Parkour.', value:0 }
         ]},
-        { prompt:'Team‑Play im Alltag – wie arbeitet Nina?', choices:[
-          { text:'Strukturiert, feedback‑offen, humorvoll (Agile/OKR).', value:2 },
+        { prompt:'Team-Play im Alltag – wie arbeitet Nina?', choices:[
+          { text:'Strukturiert, feedback-offen, humorvoll (Agile/OKR).', value:2 },
           { text:'Allein im Turm mit WLAN.', value:0 },
           { text:'Nur nachts, wenn niemand online ist.', value:1 }
         ]},
         { prompt:'Was motiviert sie?', choices:[
           { text:'Kulturschaffende stärken, Prozesse vereinfachen, Wirkung schaffen.', value:2 },
           { text:'Der Nervenkitzel der Deadline.', value:1 },
-          { text:'Glitzer, Ruhm und WLAN‑Punkte.', value:0 }
+          { text:'Glitzer, Ruhm und WLAN-Punkte.', value:0 }
         ]}
       ]
     };
-
     const $=s=>document.querySelector(s);
     const dialogText=$('#dialogText'), choices=$('#choices'), meterFill=$('#meterFill');
     const btnStart=$('#btnStart'), btnReset=$('#btnReset');
-
-    let state={ i:-1, score:0, max:CONFIG.questions.reduce((a,q)=>a+Math.max(...q.choices.map(c=>c.value)),0)};
-
+    let state={ i:-1, score:0, max:CONFIG.questions.reduce((a,q)=>a+Math.max(...q.choices.map(c=>c.value)),0) };
     function setMeter(){ const pct=Math.round((state.score/state.max)*100); meterFill.style.width=Math.min(100,pct)+'%'; meterFill.title=pct+'%'; }
     function say(t){ choices.innerHTML=''; dialogText.textContent=t; }
     function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]];} return a; }
-
     function showChoices(list){ choices.innerHTML=''; shuffle(list).forEach(opt=>{ const b=document.createElement('button'); b.className='choice'; b.textContent=opt.text; b.onclick=()=>pick(opt); choices.appendChild(b); }); }
     function next(){ state.i++; if(state.i<CONFIG.questions.length){ const q=CONFIG.questions[state.i]; say('Oliver Miescher: "'+q.prompt+'"'); showChoices(q.choices); setMeter(); } else endScene(); }
     function pick(opt){ state.score+=opt.value; setMeter(); setTimeout(next, 450); }
     function endScene(){ const pct=Math.round((state.score/state.max)*100); say('Das Orakel hat gesprochen: '+CONFIG.candidateName+' ist die perfekte Wahl! '+CONFIG.recruiterName+', Sie wissen, was Sie zu tun haben. (Match: '+pct+'%)'); const p=document.createElement('div'); p.className='choices'; const a1=document.createElement('a'); a1.className='btn primary'; a1.textContent='Mehr über Nina'; a1.href=CONFIG.links.cv; a1.target='_blank'; a1.rel='noopener'; const a2=document.createElement('a'); a2.className='btn secondary'; a2.textContent='LinkedIn'; a2.href=CONFIG.links.linkedin; a2.target='_blank'; a2.rel='noopener'; const a3=document.createElement('a'); a3.className='btn secondary'; a3.textContent='Kontakt'; a3.href=CONFIG.links.email; p.append(a1,a2,a3); choices.innerHTML=''; choices.append(p); btnStart.style.display='none'; btnReset.style.display='inline-block'; }
     function reset(){ state={ i:-1, score:0, max:state.max }; say('Nacht im Förderlabor. Oliver Miescher aktiviert das Orakel. "Prüfe: Ist Nina Blank die ideale Wahl?"'); choices.innerHTML=''; btnStart.style.display='inline-block'; btnReset.style.display='none'; setMeter(); }
-
     btnStart.onclick=()=>{ btnStart.style.display='none'; next(); };
     btnReset.onclick=reset;
     setMeter();
