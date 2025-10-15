@@ -16,7 +16,7 @@
     .oracle{position:absolute;left:50%;bottom:90px;transform:translateX(-50%);width:240px;height:120px;border:3px solid #000;border-radius:12px;background:#0a1612;}
     .oracle::before{content:"";position:absolute;left:50%;top:-16px;transform:translateX(-50%);width:96px;height:96px;border-radius:50%;background:radial-gradient(circle,var(--orb) 0 30%,rgba(234,255,207,.45) 30% 58%,transparent 60%);animation:pulse 2.4s infinite ease-in-out;}
     @keyframes pulse{0%,100%{opacity:.9;transform:translateX(-50%) scale(1);}50%{opacity:1;transform:translateX(-50%) scale(1.06);}}
-    .dialog{position:absolute;top:16px;left:50%;transform:translateX(-50%);max-width:min(92vw,860px);background:rgba(12,26,20,.93);border:2px solid #0efcb4;border-radius:12px;box-shadow:0 0 16px rgba(24,192,143,.4);padding:14px 16px;}
+    .dialog{position:absolute;bottom:100px;left:50%;transform:translateX(-50%);max-width:min(92vw,860px);background:rgba(12,26,20,.93);border:2px solid #0efcb4;border-radius:12px;box-shadow:0 0 16px rgba(24,192,143,.4);padding:14px 16px;}
     .dialog p{margin:0;line-height:1.7;font-size:clamp(14px,2.1vw,18px)}
     .choices{margin-top:12px;display:grid;gap:10px}
     .choice{padding:12px 14px;background:#0c1f19;border:3px solid #000;border-radius:10px;cursor:pointer;font-weight:800;color:var(--mint2)}
@@ -53,6 +53,11 @@
   </div>
   <script>
     const CONFIG={candidateName:'Nina Blank',recruiterName:'Oliver Miescher',
+      links:{
+        cv:'https://ninablank.github.io/mission-digitale-kultur/Nina_Blank_CV.pdf',
+        email:'mailto:nina@beispiel.ch',
+        linkedin:'https://www.linkedin.com/in/ninablank'
+      },
       questions:[
         {prompt:'Was braucht die ideale Spezialistin Digitale Kultur als Erstes?',choices:[
           {text:'Ein gutes Gleichgewicht aus Struktur und Kreativität.',value:2},
@@ -75,7 +80,7 @@
     function showChoices(list){choices.innerHTML='';shuffle(list).forEach(opt=>{const b=document.createElement('button');b.className='choice';b.textContent=opt.text;b.onclick=()=>pick(opt);choices.appendChild(b)})}
     function next(){state.i++;if(state.i<CONFIG.questions.length){const q=CONFIG.questions[state.i];say('Oliver Miescher: "'+q.prompt+'"');showChoices(q.choices);setMeter()}else endScene()}
     function pick(opt){state.score+=opt.value;setMeter();setTimeout(next,450)}
-    function endScene(){const pct=Math.round((state.score/state.max)*100);say('Das Orakel hat gesprochen: '+CONFIG.candidateName+' ist die perfekte Wahl! '+CONFIG.recruiterName+', Sie wissen, was Sie zu tun haben. (Match: '+pct+'%)');choices.innerHTML='<div class="choices"><a class="btn primary" href="#">Mehr über Nina</a></div>';btnStart.style.display='none';btnReset.style.display='inline-block'}
+    function endScene(){const pct=Math.round((state.score/state.max)*100);say('Das Orakel hat gesprochen: '+CONFIG.candidateName+' ist die perfekte Wahl! '+CONFIG.recruiterName+', Sie wissen, was Sie zu tun haben. (Match: '+pct+'%)');choices.innerHTML='<div class="choices"><a class="btn primary" href="'+CONFIG.links.cv+'" target="_blank" rel="noopener">Mehr über Nina Blank</a></div>';btnStart.style.display='none';btnReset.style.display='inline-block'}
     function reset(){state={i:-1,score:0,max:state.max};say('Nacht im Förderlabor. Oliver Miescher aktiviert das Orakel. "Prüfe: Ist Nina Blank die ideale Wahl?"');choices.innerHTML='';btnStart.style.display='inline-block';btnReset.style.display='none';setMeter()}
     btnStart.onclick=()=>{btnStart.style.display='none';next()};btnReset.onclick=reset;setMeter();
   </script>
