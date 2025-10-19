@@ -123,7 +123,7 @@
       state.i++;
       if(state.i < CONFIG.questions.length){
         const q = CONFIG.questions[state.i];
-        say('Oliver Miescher: "' + q.prompt + '"');
+        say(q.prompt);
         showChoices(q.choices);
         setMeter();
       } else endScene();
